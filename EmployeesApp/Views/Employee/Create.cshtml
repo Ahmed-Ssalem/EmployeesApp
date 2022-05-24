@@ -1,0 +1,55 @@
+﻿@model Employee
+
+@{ 
+    ViewBag.Title = Model != null ? "Edit" : "Create";
+}
+
+<h2>@ViewBag.Title Employee</h2>
+
+<form asp-action="@ViewBag.Title">
+
+    <div asp-validation-summary="All"></div>
+
+    @{
+        if (ViewBag.Title == "Edit")
+        {
+            <label asp-for="EmpId" class="control-label"></label>
+            <input asp-for="EmpId" class="form-control" readonly />
+        }
+    }
+
+
+    <label asp-for="EmpNum" class="control-label"></label>
+    <input asp-for="EmpNum" class="form-control" />
+
+    <label asp-for="EmpName" class="control-label"></label>
+    <input asp-for="EmpName" class="form-control" />
+
+    <label asp-for="DOB" class="control-label"></label>
+    <input asp-for="DOB" class="form-control" />
+
+    <label asp-for="HiringDate" class="control-label"></label>
+    <input asp-for="HiringDate" class="form-control" />
+
+    <label asp-for="GrossSalary" class="control-label"></label>
+    <input asp-for="GrossSalary" class="form-control" />
+
+    <label asp-for="NetSalary" class="control-label"></label>
+    <input asp-for="NetSalary" class="form-control" />
+
+    <label asp-for="DepartmentId" class="control-label"></label>
+    <select asp-for="DepartmentId"
+            asp-items="@(new SelectList(ViewBag.Departments, "DeptId", "DeptName") )"
+            class="form-control">
+        <option value="">Select Department</option>
+
+    </select>
+
+    <br />
+    <br />
+    <input type="submit" value="Save" class="btn btn-primary" />
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+
+
+
+</form>
